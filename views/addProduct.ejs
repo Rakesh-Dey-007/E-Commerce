@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- ******* Create Product by Admin ************ -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Create New Product</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Charm:wght@400;700&display=swap');
+
+        * {
+            font-family: "Chakra Petch", serif;
+            letter-spacing: 0.5px;
+        }
+    </style>
+
+</head>
+
+<body class="bg-zinc-900 text-zinc-400 min-h-screen w-full p-4">
+    <section class="flex justify-center items-center mt-3">
+        <div class="w-full max-w-6xl bg-transparent rounded-lg">
+            <a href="/product/adminHome"
+                class="text-1xl text-white hover:bg-zinc-800 transition duration-300 transform hover:scale-105 bg-zinc-700 p-2 rounded-lg">&#8592;
+                Back to Home</a>
+            <h1 class="text-4xl md:text-3xl sm:text-2xl font-bold text-center my-4">Create New Product</h1>
+
+
+            <form action="/owner/addProduct" method="post">
+                <!-- Hidden Input to Store Selected Category -->
+                <input type="hidden" id="selectedCategory" name="category" value="<%= selectedCategory || '' %>">
+
+                <div class="mb-4">
+                    <label class="block text-lg font-medium mb-2">Category:</label>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2 md:gap-4">
+                        <% let categories=["Laptop", "Desktop" , "Macbook" , "Accessories" , "Mobile" , "Watch"
+                            , "Mens Fashion" , "Ladies Fashion" ]; %>
+                            <% categories.forEach(category=> { %>
+                                <button type="button"
+                                    class="category-btn border-2 px-2 md:px-4 py-2 rounded-md transition duration-300 text-sm md:text-base
+                                <%= selectedCategory === category ? 'bg-blue-700 text-white' : 'border-blue-700 hover:bg-blue-700 hover:text-white' %>"
+                                    data-category="<%= category %>">
+                                    <%= category %>
+                                </button>
+                                <% }) %>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                    <div class="w-full item">
+                        <label class="block mb-1">Product Name:</label>
+                        <input type="text" placeholder="Enter Name"
+                            class="w-full p-2 rounded-md bg-zinc-800 text-white outline-none focus:ring-2 focus:ring-cyan-500"
+                            name="productName" required>
+                    </div>
+                    <div class="w-full item">
+                        <label class="block mb-1">Product Image:</label>
+                        <input type="url" placeholder="Enter URL"
+                            class="w-full p-2 rounded-md bg-zinc-800 text-white outline-none focus:ring-2 focus:ring-cyan-500"
+                            name="productImg" required>
+                    </div>
+                    <div class="w-full item">
+                        <label class="block mb-1">Product Price:</label>
+                        <input type="number" placeholder="Enter Current Price"
+                            class="w-full p-2 rounded-md bg-zinc-800 text-white outline-none focus:ring-2 focus:ring-cyan-500"
+                            name="productPrice" required>
+                    </div>
+                    <div class="w-full item">
+                        <label class="block mb-1">Product Org. Price:</label>
+                        <input type="number" placeholder="Enter Original Price"
+                            class="w-full p-2 rounded-md bg-zinc-800 text-white outline-none focus:ring-2 focus:ring-cyan-500"
+                            name="productOrgPrice">
+                    </div>
+                    <div class="w-full item">
+                        <label class="block mb-1">Product Intro:</label>
+                        <input type="text" placeholder="Add a short intro"
+                            class="w-full p-2 rounded-md bg-zinc-800 text-white outline-none focus:ring-2 focus:ring-cyan-500"
+                            name="productIntro" required>
+                    </div>
+                    <div class="w-full col-span-1 sm:col-span-2 md:col-span-2 item">
+                        <label class="block mb-1">Product Detail:</label>
+                        <textarea placeholder="Enter Details" rows="3"
+                            class="w-full p-2 rounded-md bg-zinc-800 text-white outline-none focus:ring-2 focus:ring-cyan-500"
+                            name="productDetail" required></textarea>
+                    </div>
+                </div>
+                <button type="submit"
+                    class="w-full sm:w-auto px-5 bg-cyan-500 text-gray-900 font-bold py-3 rounded-md hover:bg-cyan-600 transition duration-300 transform hover:scale-105 mt-4">Create
+                    Product</button>
+            </form>
+
+
+
+        </div>
+    </section>
+
+
+    <!-- <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const categoryButtons = document.querySelectorAll(".category-btn");
+            const selectedCategoryInput = document.getElementById("selectedCategory");
+
+            categoryButtons.forEach(button => {
+                button.addEventListener("click", function () {
+                    selectedCategoryInput.value = this.getAttribute("data-category");
+
+                    // Remove active class from all buttons
+                    categoryButtons.forEach(btn => btn.classList.remove("bg-blue-700", "text-white"));
+                    categoryButtons.forEach(btn => btn.classList.add("border-blue-700", "hover:bg-blue-700", "hover:text-white"));
+
+                    // Add active class to the selected button
+                    this.classList.add("bg-blue-700", "text-white");
+                    this.classList.remove("border-blue-700", "hover:bg-blue-700", "hover:text-white");
+                });
+            });
+        });
+    </script> -->
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const categoryButtons = document.querySelectorAll(".category-btn");
+            const selectedCategoryInput = document.getElementById("selectedCategory");
+    
+            categoryButtons.forEach(button => {
+                button.addEventListener("click", function () {
+                    // Remove 'bg-blue-700 text-white' from all buttons
+                    categoryButtons.forEach(btn => {
+                        btn.classList.remove("bg-blue-700", "text-white");
+                        btn.classList.add("border-blue-700", "hover:bg-blue-700", "hover:text-white");
+                    });
+    
+                    // Add selected style to clicked button
+                    this.classList.add("bg-blue-700", "text-white");
+                    this.classList.remove("border-blue-700", "hover:bg-blue-700", "hover:text-white");
+    
+                    // Update hidden input value
+                    selectedCategoryInput.value = this.dataset.category;
+                });
+            });
+        });
+    </script>
+    
+    
+
+</body>
+
+
+
+</html>

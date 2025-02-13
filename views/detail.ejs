@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- ********** Product Details ********** after click on any product -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Charm:wght@400;700&display=swap');
+
+        :root {
+            --dark-cyan: hsl(158, 36%, 37%);
+            --cream: hsl(30, 38%, 92%);
+            --very-dark-blue: hsl(157, 30%, 24%);
+            --dark-grayish-blue: hsl(228, 12%, 48%);
+            --white: hsl(0, 0%, 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Chakra Petch", serif;
+        }
+
+        body {
+            font-family: "Chakra Petch", serif;
+            /* background-color: var(--cream); */
+            background: #0e0e0e;
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        #particles-js {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        main {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        main .card {
+            width: 700px;
+            background-color: var(--white);
+            display: flex;
+            border-radius: 12px;
+        }
+
+        main .card .card__img,
+        main .card .card__content {
+            width: 50%;
+        }
+
+        main .card .card__img picture {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        main .card .card__img picture img {
+            width: 100%;
+            height: 100%;
+            border-radius: 12px 0px 0px 12px;
+        }
+
+        main .card .card__content {
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            row-gap: 18px;
+        }
+
+        main .card .card__content .card__tag {
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 14px;
+            color: var(--dark-grayish-blue);
+        }
+
+        main .card .card__content .card__title {
+            font-family: "Charm", serif;
+            text-transform: capitalize;
+        }
+
+        main .card .card__content .card__desc {
+            font-size: 14px;
+            color: var(--dark-grayish-blue);
+            line-height: 24px;
+        }
+
+        main .card .card__content .card__price {
+            display: flex;
+            align-items: center;
+            column-gap: 20px;
+        }
+
+        main .card .card__content .card__price h1 {
+            color: var(--dark-cyan);
+            font-family: "Charm", serif;
+
+        }
+
+        main .card .card__content .card__price s {
+            font-size: 14px;
+            color: var(--dark-grayish-blue);
+        }
+
+        main .card .card__content .card__btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            column-gap: 10px;
+            background-color: var(--dark-cyan);
+            padding: 14px;
+            outline: none;
+            border: 0;
+            border-radius: 10px;
+            color: rgb(20, 20, 20);
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 200ms linear;
+        }
+
+        main .card .card__content .card__btn:hover {
+            background-color: var(--very-dark-blue);
+        }
+
+        @media (max-width: 600px) {
+            body {
+                height: auto;
+            }
+
+            main {
+                padding: 20px;
+            }
+
+            main .card {
+                flex-direction: column;
+            }
+
+            main .card .card__img,
+            main .card .card__content {
+                width: 100%;
+            }
+
+            main .card .card__img picture img {
+                border-radius: 12px 12px 0px 0px;
+            }
+
+            main .card .card__content {
+                padding: 20px;
+                row-gap: 16px;
+            }
+        }
+
+        .quentity {
+            font-size: 16px;
+        }
+
+        .number {
+            background: #ff0000;
+            /* Change to a more visible color */
+            color: white;
+            /* Text color for better visibility */
+            border-radius: 5px;
+            /* Rounded corners */
+        }
+
+        .btn {
+            padding: 10px 15px;
+            background: grey;
+            font-size: 15px;
+            margin-left: 20px;
+            border-radius: 10px;
+            border: none;
+            outline: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="particles-js"></div>
+    <a href="/product/home"><button class="btn">Back To Home</button></a>
+    <main>
+        <div class="card">
+            <div class="card__img">
+                <picture>
+
+                    <img src="<%= product.productImg %>" alt="">
+                </picture>
+            </div>
+
+            <div class="card__content">
+                <p class="card__tag">
+                    <%= product.category %>
+                </p>
+                <h1 class="card__title">
+                    <%= product.productName %>
+                </h1>
+                <p class="card__desc">
+                    <%= product.productIntro %>
+                </p>
+
+                <div class="quentity" style="display: flex; justify-content: space-between; align-items: center;">
+                    <p>Quantity</p>
+                    <div style="display: flex; align-items: center;">
+                        <button id="decrease-btn" style="padding: 1px 3px;"><i class="fa-solid fa-minus"></i></button>
+                        <div class="number" id="quantity"
+                            style="width: 35px; height: 25px; background: grey; color: black; margin: 0 7px; display: flex; justify-content: center; align-items: center;">
+                            1</div>
+                        <button id="increase-btn" style="padding: 1px 3px;"><i class="fa-solid fa-plus"></i></button>
+                    </div>
+                </div>
+
+                <div class="card__price">
+                    <h1 id="price">₹<%= product.productPrice %>
+                    </h1>
+                    <s id="prev-price">₹<%= product.productOrgPrice %></s>
+                </div>
+
+                <form action="/product/addToCart/<%= product._id %>" method="POST">
+                    <button class="card__btn">
+                        <i class="fa-brands fa-opencart"></i>
+                        Add to Cart
+                    </button>
+                </form>
+            </div>
+
+
+        </div>
+
+    </main>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Get elements
+            const quantityDisplay = document.getElementById("quantity");
+            const priceDisplay = document.getElementById("price");
+            const previousPrice = document.getElementById("prev-price");
+            const increaseBtn = document.getElementById("increase-btn");
+            const decreaseBtn = document.getElementById("decrease-btn");
+
+            // Extract numeric values from price text (remove ₹ symbol and convert to float)
+            const pricePerUnit = parseFloat(priceDisplay.textContent.replace("₹", "").trim());
+            const prevPricePerUnit = parseFloat(previousPrice.textContent.replace("₹", "").trim());
+
+            let quantity = 1; // Initial quantity
+
+            // Increase quantity
+            increaseBtn.addEventListener("click", () => {
+                quantity++;
+                updateDisplay();
+            });
+
+            // Decrease quantity (minimum 1)
+            decreaseBtn.addEventListener("click", () => {
+                if (quantity > 1) {
+                    quantity--;
+                    updateDisplay();
+                }
+            });
+
+            // Update the price display
+            function updateDisplay() {
+                quantityDisplay.textContent = quantity;
+                priceDisplay.textContent = `₹${(pricePerUnit * quantity).toFixed(2)}`;
+                previousPrice.textContent = `₹${(prevPricePerUnit * quantity).toFixed(2)}`;
+            }
+        });
+
+    </script>
+
+
+
+    <script>
+        // Particles.js configuration
+        particlesJS('particles-js', {
+            particles: {
+                number: {
+                    value: 80,
+                    density: {
+                        enable: true,
+                        value_area: 800
+                    }
+                },
+                color: {
+                    value: '#7f00ff'  // Updated to new violet color
+                },
+                shape: {
+                    type: 'circle'
+                },
+                opacity: {
+                    value: 0.5,
+                    random: false
+                },
+                size: {
+                    value: 3,
+                    random: true
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: '#7f00ff',  // Updated to new violet color
+                    opacity: 0.4,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: 'none',
+                    random: false,
+                    straight: false,
+                    out_mode: 'out',
+                    bounce: false
+                }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: {
+                    onhover: {
+                        enable: true,
+                        mode: 'repulse'
+                    },
+                    onclick: {
+                        enable: true,
+                        mode: 'push'
+                    },
+                    resize: true
+                }
+            },
+            retina_detect: true
+        });
+    </script>
+
+</body>
+
+</html>

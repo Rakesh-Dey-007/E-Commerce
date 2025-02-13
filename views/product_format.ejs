@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Page</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/products.css">
+    <style>
+        .link {
+            text-decoration: none;
+            color: inherit;
+            background: none;
+            border: none;
+            font: inherit;
+            cursor: auto;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div id="particles-js"></div>
+    <nav>
+        <a href="#" class="logo">RD SHOP</a>
+
+        <button class="hamburger">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <div class="nav-links">
+            <div class="search-bar">
+                <input type="text" placeholder="Search products...">
+            </div>
+
+            <ul>
+                <li><a href="/product/home">Home</a></li>
+                <li class="dropdown">
+                    <a href="#">Categories</a>
+                    <div class="dropdown-content">
+                        <a href="/product/category/Laptop">Laptops</a>
+                        <a href="/product/category/Macbook">MacBook</a>
+                        <a href="/product/category/Desktop">Desktops</a>
+                        <a href="/product/category/Accessories">Accessories</a>
+                        <a href="/product/category/Mobile">Mobiles</a>
+                        <a href="/product/category/Watch">Watches</a>
+                        <a href="/product/category/Ladies Fashion">Ladies Clothes</a>
+                        <a href="/product/category/Mens Fashion">Mens Clothes</a>
+                    </div>
+                </li>
+                <li><a href="#">Orders</a></li>
+            </ul>
+
+            <div class="icons">
+                <a href="/user/profile" style="display: flex;">User<i class="fas fa-user" style="margin-left: 5px;"></i></a>
+                <a href="#"><i class="fa-brands fa-opencart"></i></a>
+            </div>
+        </div>
+    </nav>
+
+
+
+    <div class="content">
+
+
+        <% if (typeof products !=='undefined' && products.length> 0) { %>
+            <% products.forEach(product=> { %>
+                <a href="/product/detail/<%= product._id %>" class="link">
+                    <div class="nft">
+                        <div class='main'>
+                            <img class='tokenImage' src="<%= product.productImg %>" alt="Product Image" />
+                            <h2>
+                                <%= product.productName %>
+                            </h2>
+                            <p class='description'>
+                                <%= product.productIntro %>
+                            </p>
+
+                            <div class='tokenInfo'>
+                                <div class="price">
+                                    <ins>◘</ins>
+                                    <p>$<%= product.productPrice %>
+                                    </p>
+                                </div>
+                                <div class="duration">
+                                    <ins>◷</ins>
+                                    <p>Offer is On</p>
+                                </div>
+                            </div>
+
+                            <hr />
+
+                            <div class='creator'>
+                                <p><ins>Designed by RD</p>
+                            </div>
+                        </div>
+                    </div>
+                    <% }); %>
+                        <% } else { %>
+                            <p>No products found in this category.</p>
+                            <% } %>
+                </a>
+    </div>
+
+
+
+
+
+
+
+    <script>
+        particlesJS('particles-js', {
+            particles: {
+                number: {
+                    value: 80,
+                    density: {
+                        enable: true,
+                        value_area: 800
+                    }
+                },
+                color: {
+                    value: '#7F00FF'
+                },
+                shape: {
+                    type: 'circle'
+                },
+                opacity: {
+                    value: 0.5,
+                    random: false
+                },
+                size: {
+                    value: 3,
+                    random: true
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: '#7F00FF',
+                    opacity: 0.4,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: 'none',
+                    random: false,
+                    straight: false,
+                    out_mode: 'out',
+                    bounce: false
+                }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: {
+                    onhover: {
+                        enable: true,
+                        mode: 'repulse'
+                    },
+                    onclick: {
+                        enable: true,
+                        mode: 'push'
+                    },
+                    resize: true
+                }
+            },
+            retina_detect: true
+        });
+
+
+        // Hamburger menu functionality
+        document.querySelector('.hamburger').addEventListener('click', function () {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function (e) {
+            if (!e.target.closest('nav')) {
+                document.querySelector('.nav-links').classList.remove('active');
+            }
+        });
+    </script>
+
+</body>
+
+</html>

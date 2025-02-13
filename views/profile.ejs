@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- ********* User Profile *********** -->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <link rel="stylesheet" href="/css/profile.css">
+</head>
+
+<body>
+    <a href="/product/home">
+        <button class="button">Back to Home</button>
+    </a>
+    <div class="card">
+        <div class="left-container">
+            <img src="<%= user.profileImage ? '/images/uploads/' + user.profileImage : 'https://easy-peasy.ai/cdn-cgi/image/quality=80,format=auto,width=700/https://fdczvxmwwjwpwbeeqcth.supabase.co/storage/v1/object/public/images/fc8d0488-fec8-4354-adf8-62a6028dc103/c792696e-a6e6-4107-bcf4-6a540894d39c.png' %>"
+                alt="Profile Image">
+            <h2 class="gradienttext">
+                <%= user.fullname %>
+            </h2>
+            <p style="margin-bottom: 8vh;">Account Varified</p>
+            <a href="/user/delete"><button class="button-86">Delete</button></a>
+        </div>
+        <div class="right-container">
+            <h3 class="gradienttext">Profile Details</h3>
+            <table>
+                <tr>
+                    <td>Username:</td>
+                    <td>
+                        <%= user.username || 'Not provided' %>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Age:</td>
+                    <td>
+                        <%= user.age || 'Not provided' %>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Mobile:</td>
+                    <td>
+                        <%= user.mobile || 'Not provided' %>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Email:</td>
+                    <td>
+                        <%= user.email %>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Address:</td>
+                    <td>
+                        <%= user.address || 'Not provided' %>
+                    </td>
+                </tr>
+
+            </table>
+            <div class="btn-container">
+                <a href="/user/profileEdit"><button class="button-86">Update</button></a>
+                <a href="/user/logout"><button class="button-86">Log out</button></a>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>

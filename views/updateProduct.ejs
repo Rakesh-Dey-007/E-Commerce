@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Update Product Details</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Charm:wght@400;700&display=swap');
+
+        * {
+            font-family: "Chakra Petch", serif;
+            letter-spacing: 0.5px;
+        }
+    </style>
+</head>
+
+<body class="bg-zinc-900 text-white p-8">
+    <h1 class="text-3xl font-bold mb-10 text-yellow-300 flex justify-center">Update Product Details</h1>
+    <form action="/product/update/<%= product._id %>" method="POST" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="flex flex-col">
+            <label class="mb-2">Category:</label>
+            <input type="text" name="category" value="<%= product.category %>" required
+                class="p-2 rounded bg-zinc-800 border border-zinc-700 focus:outline-none focus:ring-2 focus:ring-violet-500 hover:bg-zinc-700 transition" />
+        </div>
+
+        <div class="flex flex-col">
+            <label class="mb-2">Product Name:</label>
+            <input type="text" name="productName" value="<%= product.productName %>" required
+                class="p-2 rounded bg-zinc-800 border border-zinc-700 focus:outline-none focus:ring-2 focus:ring-violet-500 hover:bg-zinc-700 transition" />
+        </div>
+
+        <div class="flex flex-col">
+            <label class="mb-2">Image URL:</label>
+            <input type="text" name="productImg" value="<%= product.productImg %>" required
+                class="p-2 rounded bg-zinc-800 border border-zinc-700 focus:outline-none focus:ring-2 focus:ring-violet-500 hover:bg-zinc-700 transition" />
+        </div>
+
+        <div class="flex flex-col">
+            <label class="mb-2">Price:</label>
+            <input type="number" name="productPrice" value="<%= product.productPrice %>" required
+                class="p-2 rounded bg-zinc-800 border border-zinc-700 focus:outline-none focus:ring-2 focus:ring-violet-500 hover:bg-zinc-700 transition" />
+        </div>
+
+        <div class="flex flex-col">
+            <label class="mb-2">Original Price:</label>
+            <input type="number" name="productOrgPrice" value="<%= product.productOrgPrice %>" required
+                class="p-2 rounded bg-zinc-800 border border-zinc-700 focus:outline-none focus:ring-2 focus:ring-violet-500 hover:bg-zinc-700 transition" />
+        </div>
+
+        <div class="flex flex-col">
+            <label class="mb-2">Introduction:</label>
+            <textarea name="productIntro" required
+                class="p-2 rounded bg-zinc-800 border border-zinc-700 focus:outline-none focus:ring-2 focus:ring-violet-500 hover:bg-zinc-700 transition"><%= product.productIntro %></textarea>
+        </div>
+
+        <div class="flex flex-col">
+            <label class="mb-2">Details:</label>
+            <textarea name="productDetail" required
+                class="p-2 rounded bg-zinc-800 border border-zinc-700 focus:outline-none focus:ring-2 focus:ring-violet-500 hover:bg-zinc-700 transition"><%= product.productDetail %></textarea>
+        </div>
+
+        <div class="flex items-center justify-center col-span-1 md:col-span-3 bg-violet-800 w-50 rounded-lg">
+            <button type="submit"
+                class="bg-violet-600 text-white py-2 px-4 rounded hover:bg-violet-500 transition">Update
+                Product</button>
+        </div>
+    </form>
+</body>
+
+</html>

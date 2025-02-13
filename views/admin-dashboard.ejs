@@ -1,0 +1,417 @@
+<html lang="en" class="dark-theme">
+    <!-- ********** Admin Dashboard *********** -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Dashboard</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+</head>
+<body>
+    <div id="notification-container"></div>
+
+    <div class="dashboard">
+        <nav class="sidebar">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-cube"></i>
+                </div>
+                <span>RD Shop</span>
+            </div>
+            <ul class="nav-links">
+                <li class="active" data-section="dashboard" data-content="dashboard-content">
+                    <i class="fas fa-home"></i>
+                    <span>Dashboard</span>
+                    <div class="nav-indicator"></div>
+                </li>
+                <li data-section="analytics" data-content="analytics-content">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Overview</span>
+                    <div class="nav-indicator"></div>
+                </li>
+                <li data-section="projects" data-content="projects-content">
+                    <i class="fas fa-project-diagram"></i>
+                    <span>Projects</span>
+                    <div class="nav-indicator"></div>
+                </li>
+                <li data-section="messages" data-content="messages-content">
+                    <i class="fas fa-envelope"></i>
+                    <span>Messages</span>
+                    <div class="nav-indicator"></div>
+                    <span class="badge">5</span>
+                </li>
+                <li data-section="settings" data-content="settings-content">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                    <div class="nav-indicator"></div>
+                </li>
+            </ul>
+        </nav>
+
+        <main class="main-content">
+            <header>
+                <div class="header-left">
+                    <div class="search-bar">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search anything...">
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div class="notifications">
+                        <div class="notification-trigger">
+                            <i class="fas fa-bell"></i>
+                            <span class="notification-badge">3</span>
+                        </div>
+                        <div class="notifications-dropdown">
+                            <div class="notifications-header">
+                                <div class="header-left">
+                                    <h3 class="notifications-title">Notifications</h3>
+                                    <span class="mark-all">Mark all read</span>
+                                </div>
+                                <button class="settings-btn">
+                                    <i class="fas fa-cog"></i>
+                                    Settings
+                                </button>
+                            </div>
+                            <div class="filter-pills">
+                                <span class="filter-pill active">All</span>
+                                <span class="filter-pill">Unread</span>
+                                <span class="filter-pill">Important</span>
+                            </div>
+                            <div class="notification-list">
+                            </div>
+                            <div class="dropdown-footer">
+                                <button class="filter-button">
+                                    <i class="fas fa-clock"></i>
+                                    Last 7 days
+                                </button>
+                                <button class="filter-button">
+                                    <i class="fas fa-filter"></i>
+                                    Filter
+                                </button>
+                                <a href="#" class="view-all">View All</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="profile">
+                        <div class="profile-trigger">
+                            <div class="profile-avatar">
+                                <span class="avatar-text">RD</span>
+                            </div>
+                            <div class="profile-info">
+                                <span class="profile-name">Rakesh Dey</span>
+                                <span class="profile-role">Administrator</span>
+                            </div>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="profile-dropdown">
+                            <div class="dropdown-header">
+                                <div class="header-avatar">
+                                    <span class="avatar-text">RD</span>
+                                </div>
+                                <div class="header-info">
+                                    <h4>Rakesh Dey</h4>
+                                    <span>admin_rd@gmail.com</span>
+                                </div>
+                            </div>
+                            <div class="dropdown-divider"></div>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <i class="fas fa-user"></i>
+                                    <span>My Profile</span>
+                                </li>
+                                <li>
+                                    <i class="fas fa-cog"></i>
+                                    <span>Settings</span>
+                                </li>
+                                <li>
+                                    <i class="fas fa-palette"></i>
+                                    <span>Theme</span>
+                                    <label class="theme-switch">
+                                        <input type="checkbox" id="theme-toggle">
+                                        <span class="switch-slider"></span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <i class="fas fa-bell"></i>
+                                    <span>Notifications</span>
+                                </li>
+                            </ul>
+                            <div class="dropdown-divider"></div>
+                            <ul class="dropdown-menu">
+                                <li class="logout">
+                                    <i class="fas fa-sign-out-alt"></i>
+                                    <a href="/logout"><span>Logout</span></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div id="dashboard-content" class="content-section active">
+                <div class="dashboard-grid">
+                    <div class="stats-container">
+                        <div class="stat-card glow">
+                            <div class="stat-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="stat-details">
+                                <h3>Total Users</h3>
+                                <p class="counter" data-target="15423">0</p>
+                                <span class="trend positive">+12.5%</span>
+                            </div>
+                        </div>
+                        <div class="stat-card glow">
+                            <div class="stat-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="stat-details">
+                                <h3>Revenue</h3>
+                                <p class="counter" data-target="84591">0</p>
+                                <span class="trend positive">+8.2%</span>
+                            </div>
+                        </div>
+                        <div class="stat-card glow">
+                            <div class="stat-icon">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                            <div class="stat-details">
+                                <h3>Sales</h3>
+                                <p class="counter" data-target="24895">0</p>
+                                <span class="trend negative">-2.4%</span>
+                            </div>
+                        </div>
+                        <div class="stat-card glow">
+                            <div class="stat-icon">
+                                <i class="fas fa-ticket-alt"></i>
+                            </div>
+                            <div class="stat-details">
+                                <h3>Tickets</h3>
+                                <p class="counter" data-target="1287">0</p>
+                                <span class="trend positive">+5.7%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="charts-container">
+                        <div class="chart-card glow">
+                            <div class="revenue-header">
+                                <h2>Revenue Analytics</h2>
+                                <select class="revenue-filter">
+                                    <option value="1">Last 24 Hours</option>
+                                    <option value="7" selected>Last 7 Days</option>
+                                    <option value="30">Last 30 Days</option>
+                                    <option value="90">Last 90 Days</option>
+                                    <option value="365">Last Year</option>
+                                </select>
+                            </div>
+                            <div id="revenueChart"></div>
+                        </div>
+                        <div class="chart-card glow">
+                            <div class="chart-header">
+                                <h3>User Activity</h3>
+                                <div class="chart-actions">
+                                    <div class="legend">
+                                        <span class="legend-item">
+                                            <span class="dot new"></span> New Users
+                                        </span>
+                                        <span class="legend-item">
+                                            <span class="dot returning"></span> Returning
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="userActivityChart"></div>
+                        </div>
+                    </div>
+
+                    <div class="activity-card glow">
+                        <div class="activity-header">
+                            <h2>Recent Activity</h2>
+                            <button class="filter-button">
+                                <i class="fas fa-filter"></i>
+                                Filter
+                            </button>
+                        </div>
+                        <div class="activity-list" id="activityList"></div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- ********** Add Product *********** -->
+
+            <div id="analytics-content" class="content-section">
+                <div class="section-header">
+                    <h2>Analytics Overview</h2>
+                    <p>Track your business performance and growth</p>
+                </div>
+                <div class="analytics-grid">
+                    <div class="analytics-card">
+                        <div id="salesTrendChart"></div>
+                    </div>
+                    <div class="analytics-card">
+                        <div id="conversionChart"></div>
+                    </div>
+                    <div class="analytics-metrics">
+                        <div class="metric-card">
+                            <i class="fas fa-users"></i>
+                            <div class="metric-info">
+                                <h3>Total Users</h3>
+                                <span class="counter" data-target="15423">0</span>
+                                <p class="trend positive">+12.5% <span>vs last month</span></p>
+                            </div>
+                        </div>
+                        <div class="metric-card">
+                            <i class="fas fa-shopping-cart"></i>
+                            <div class="metric-info">
+                                <h3>Sales</h3>
+                                <span class="counter" data-target="8745">0</span>
+                                <p class="trend positive">+8.2% <span>vs last month</span></p>
+                            </div>
+                        </div>
+                        <div class="metric-card">
+                            <i class="fas fa-chart-line"></i>
+                            <div class="metric-info">
+                                <h3>Revenue</h3>
+                                <span class="counter" data-target="452680">$0</span>
+                                <p class="trend positive">+15.8% <span>vs last month</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div id="projects-content" class="content-section">
+                <div class="section-header">
+                    <h2>Project Management</h2>
+                    <p>Track and manage your ongoing projects</p>
+                </div>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>Website Redesign</h3>
+                            <span class="status in-progress">In Progress</span>
+                        </div>
+                        <p>Modernizing the company website with new features and improved UI/UX</p>
+                        <div class="project-meta">
+                            <div class="team-members">
+                                <img src="https://ui-avatars.com/api/?name=John+Doe&background=6d5acd&color=fff" alt="Team Member">
+                                <img src="https://ui-avatars.com/api/?name=Jane+Smith&background=4361ee&color=fff" alt="Team Member">
+                                <img src="https://ui-avatars.com/api/?name=Mike+Johnson&background=2ed573&color=fff" alt="Team Member">
+                            </div>
+                            <div class="project-progress">
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 75%"></div>
+                                </div>
+                                <span>75%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>Mobile App Development</h3>
+                            <span class="status pending">Pending</span>
+                        </div>
+                        <p>Creating a new mobile application for customer engagement</p>
+                        <div class="project-meta">
+                            <div class="team-members">
+                                <img src="https://ui-avatars.com/api/?name=Sarah+Wilson&background=ffa502&color=fff" alt="Team Member">
+                                <img src="https://ui-avatars.com/api/?name=Tom+Brown&background=ff4757&color=fff" alt="Team Member">
+                            </div>
+                            <div class="project-progress">
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 30%"></div>
+                                </div>
+                                <span>30%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="messages-content" class="content-section">
+                <div class="section-header">
+                    <h2>Messages</h2>
+                    <p>Your communications hub</p>
+                </div>
+                <div class="messages-container">
+                    <div class="message-list">
+                        <div class="message-item unread">
+                            <img src="https://ui-avatars.com/api/?name=Sarah+Wilson&background=ffa502&color=fff" alt="Sarah Wilson">
+                            <div class="message-content">
+                                <div class="message-header">
+                                    <h4>Sarah Wilson</h4>
+                                    <span>2 hours ago</span>
+                                </div>
+                                <p>Hey, I've completed the initial designs for the new project. Would love your feedback!</p>
+                            </div>
+                        </div>
+                        <div class="message-item">
+                            <img src="https://ui-avatars.com/api/?name=Mike+Johnson&background=2ed573&color=fff" alt="Mike Johnson">
+                            <div class="message-content">
+                                <div class="message-header">
+                                    <h4>Mike Johnson</h4>
+                                    <span>5 hours ago</span>
+                                </div>
+                                <p>The latest deployment was successful. All systems are running smoothly.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="settings-content" class="content-section">
+                <div class="section-header">
+                    <h2>Settings</h2>
+                    <p>Customize your dashboard experience</p>
+                </div>
+                <div class="settings-grid">
+                    <div class="settings-card">
+                        <h3>Theme Preferences</h3>
+                        <div class="setting-option">
+                            <span>Dark Mode</span>
+                            <label class="switch">
+                                <input type="checkbox" id="theme-toggle" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="setting-option">
+                            <span>Compact View</span>
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="settings-card">
+                        <h3>Notifications</h3>
+                        <div class="setting-option">
+                            <span>Email Notifications</span>
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="setting-option">
+                            <span>Push Notifications</span>
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+
+    <script src="/js/dashboard.js"></script>
+</body>
+</html>

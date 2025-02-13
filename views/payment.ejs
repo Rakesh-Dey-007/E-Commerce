@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Charm:wght@400;700&display=swap');
+
+        ::-webkit-scrollbar {
+            width: 7px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+            /* Dark background for the track */
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #8b5cf6;
+            /* Violet color for the scrollbar thumb */
+            border-radius: 3.5px;
+            /* Rounded edges */
+            transition: background 0.3s ease;
+            /* Smooth transition for color change */
+        }
+
+        ::-webkit-scrollbar-thumb:active {
+            background: #7c3aed;
+            /* Slightly darker violet when active */
+        }
+
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Chakra Petch", serif;
+            letter-spacing: 0.5px;
+        }
+
+        body {
+            background-color: #1a1a1a;
+            color: #fff;
+            min-height: 100vh;
+            padding: 1rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .product-card {
+            background-color: #2d2d2d;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            display: flex;
+            gap: 30px;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .product-info h2 {
+            color: #8b5cf6;
+            margin-bottom: 1rem;
+        }
+
+        .price-info {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .current-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #8b5cf6;
+        }
+
+        .original-price {
+            text-decoration: line-through;
+            color: #888;
+        }
+
+        .savings {
+            background-color: #4c1d95;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            margin-bottom: 2rem;
+            display: inline-block;
+        }
+
+        .payment-options {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .payment-option {
+            background-color: #2d2d2d;
+            border: 2px solid #4c1d95;
+            border-radius: 10px;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .payment-option:hover {
+            background-color: #3d3d3d;
+        }
+
+        .payment-option.selected {
+            background-color: #4c1d95;
+            transform: scale(1.02);
+        }
+
+        .payment-option img {
+            width: 30px;
+            height: 30px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 1rem;
+            }
+
+            .product-card {
+                padding: 1rem;
+                flex-direction: column;
+            }
+
+            .price-info {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        button {
+            padding: 10px 15px;
+            background: #4c1d95;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            color: #fff;
+            transition: 0.3s;
+            margin-bottom: 20px;
+
+        }
+
+        .buy-btn {
+            margin-top: 20px;
+            padding: 15px 10vw;
+            font-size: 15px;
+            margin-bottom: 0px;
+        }
+
+        button:hover {
+            background: #3d1777;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+
+<body>
+    <a href="/product/home"><button>Back to Home</button></a>
+
+    <div class="container">
+        <div class="product-card">
+            <img src="<%= product.productImg %>" alt="Product Image" class="product-image">
+            <div class="product-info">
+                <h2><%= product.productName %></h2>
+                <div class="price-info">
+                    <span class="current-price">$<%= product.productPrice %></span>
+                    <span class="original-price">$<%= product.productOrgPrice %></span>
+                </div>
+                <div class="savings">
+                    You save: $<%= product.productOrgPrice - product.productPrice %>
+                </div>
+            </div>
+        </div>
+
+        <div class="payment-options">
+            <div class="payment-option" data-payment="cod">
+                <i class="fa-solid fa-sack-dollar"></i>
+                <span>Cash on Delivery</span>
+            </div>
+            <div class="payment-option" data-payment="gpay">
+                <i class="fa-brands fa-google-pay"></i>
+                <span>Google Pay </span><span><i class="fa-solid fa-share"></i></span><span>Auto Payment</span>
+            </div>
+        </div>
+
+        <form id="orderForm" action="/product/placeOrder" method="POST">
+            <button type="submit" class="buy-btn">Place Order</button>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const paymentOptions = document.querySelectorAll('.payment-option');
+
+            paymentOptions.forEach(option => {
+                option.addEventListener('click', () => {
+                    paymentOptions.forEach(opt => opt.classList.remove('selected'));
+                    option.classList.add('selected');
+                    const selectedPayment = option.dataset.payment;
+                    console.log('Selected payment method:', selectedPayment);
+                });
+            });
+
+            // Show pop-up on Place Order button click
+            document.getElementById('orderForm').addEventListener('submit', (event) => {
+                event.preventDefault(); // Prevent form submission
+                alert('Order placed successfully!'); // Show success popup
+                setTimeout(() => {
+                    window.location.href = "/product/home"; // Redirect to home
+                }, 1000);
+            });
+        });
+
+        function goToHome() {
+            window.location.href = "/product/home";
+        }
+    </script>
+</body>
+
+
+</html>
