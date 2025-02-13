@@ -1,0 +1,541 @@
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Charm:wght@400;700&display=swap');
+
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #7F00FF;
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9B00FF;
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  /* box-sizing: border-box; */
+  font-family: "Chakra Petch", serif;
+  scroll-behavior: smooth;
+  transition: 0.3s;
+}
+
+body {
+  background: #121212;
+  color: #ffffff;
+  min-height: 100vh;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+#particles-js {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  padding: 1rem;
+  margin: 0 auto;
+  display: flex;
+}
+
+/* .productContainer {
+    display: flex;
+} */
+
+
+
+
+
+
+
+
+.nft {
+  user-select: none;
+  max-width: 300px;
+  margin: 2rem auto;
+  border: 1px solid #ffffff22;
+  background-color: #282c34;
+  background: linear-gradient(0deg, #282c34 0%, rgba(17, 0, 32, 0.5) 100%);
+  box-shadow: 0 7px 20px 5px #00000088;
+  border-radius: 0.7rem;
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+  overflow: hidden;
+  transition: 0.5s all;
+}
+
+.nft hr {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #88888855;
+  margin-top: 0;
+}
+
+.nft ins {
+  text-decoration: none;
+}
+
+.nft .main {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  padding: 1rem;
+}
+
+.nft .main h2 {
+  letter-spacing: 1.2px;
+  margin-top: 7px;
+}
+
+.nft .main .tokenImage {
+  border-radius: 0.5rem;
+  max-width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.nft .main .description {
+  margin: 0.5rem 0;
+  color: #a89ec9;
+}
+
+.nft .main .tokenInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nft .main .tokenInfo .price {
+  display: flex;
+  align-items: center;
+  color: #ee83e5;
+  font-weight: 700;
+}
+
+.nft .main .tokenInfo .price ins {
+  margin-left: -0.3rem;
+  margin-right: 0.5rem;
+}
+
+.nft .main .tokenInfo .price p {
+  letter-spacing: 1px;
+}
+
+.nft .main .tokenInfo .duration {
+  display: flex;
+  align-items: center;
+  color: #a89ec9;
+  margin-right: 0.2rem;
+}
+
+.nft .main .tokenInfo .duration ins {
+  margin: 0.5rem;
+  margin-bottom: 0.4rem;
+}
+
+.nft .main .creator {
+  display: flex;
+  align-items: center;
+  margin-top: 0.2rem;
+  margin-bottom: -0.3rem;
+}
+
+.nft .main .creator ins {
+  color: #a89ec9;
+  text-decoration: none;
+}
+
+.nft .main .creator .wrapper {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ffffff22;
+  padding: 0.3rem;
+  margin: 0;
+  margin-right: 0.5rem;
+  border-radius: 100%;
+  box-shadow: inset 0 0 0 4px #000000aa;
+}
+
+.nft .main .creator .wrapper img {
+  border-radius: 100%;
+  border: 1px solid #ffffff22;
+  width: 2rem;
+  height: 2rem;
+  object-fit: cover;
+  margin: 0;
+}
+
+.nft ::before {
+  position: fixed;
+  content: "";
+  box-shadow: 0 0 100px 40px #ffffff08;
+  top: -10%;
+  left: -100%;
+  transform: rotate(-45deg);
+  height: 60rem;
+  transition: 0.7s all;
+}
+
+.nft:hover {
+  border: 1px solid #ffffff44;
+  box-shadow: 0 7px 50px 10px #000000aa;
+  transform: scale(1.015);
+  filter: brightness(1.3);
+}
+
+.nft:hover ::before {
+  filter: brightness(0.5);
+  top: -100%;
+  left: 200%;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .nft {
+    max-width: 90%;
+    /* Adjust max-width for smaller screens */
+    margin: 2rem auto;
+    /* Reduce margin for better spacing */
+  }
+
+  .nft .main .tokenImage {
+    height: 200px;
+    /* Adjust image height for smaller screens */
+  }
+
+  .content {
+    flex-direction: column;
+    /* Stack NFTs vertically on smaller screens */
+    align-items: center;
+    /* Center align content */
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 0 1rem;
+    /* Add padding to body for smaller screens */
+  }
+
+  .nft .main h2 {
+    font-size: 1.5rem;
+    /* Adjust font size for headings */
+  }
+
+  .nft .main .description {
+    font-size: 0.9rem;
+    /* Adjust font size for descriptions */
+  }
+
+  .nft .main .tokenInfo .price p {
+    font-size: 1rem;
+    /* Adjust font size for price */
+  }
+
+  .nft .main .tokenInfo .duration p {
+    font-size: 0.9rem;
+    /* Adjust font size for duration */
+  }
+}
+
+
+.content {
+  display: grid;
+  /* Use grid layout */
+  grid-template-columns: repeat(4, 1fr);
+  /* Create 4 equal columns */
+
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .content {
+    grid-template-columns: repeat(2, 1fr);
+    /* 2 columns for tablets */
+  }
+}
+
+@media (max-width: 480px) {
+  .content {
+    grid-template-columns: 1fr;
+    /* 1 column for mobile devices */
+  }
+}
+
+
+:root {
+  --primary: #4a006a;
+  --primary-glow: rgba(127, 0, 255, 0.5);
+  --text-light: #ffffff;
+  --text-dark: #1a1a1a;
+  --bg-dark: #0a0a0a;
+  --violet: #7f00ff;
+}
+
+/* Updated Navbar Styles */
+nav {
+  background: rgba(10, 10, 10, 0.5);
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(127, 0, 255, 0.3);
+}
+
+.logo {
+  color: var(--text-light);
+  font-size: 1.7rem;
+  font-weight: bold;
+  text-decoration: none;
+  transition: text-shadow 0.3s;
+  z-index: 1001;
+  font-family: "Charm", serif;
+  color: #ff4a77;
+  font-weight: 700;
+  text-shadow: 0 0 10px var(--primary),
+    0 0 20px var(--primary),
+    0 0 30px var(--primary);
+
+}
+
+
+.search-bar {
+  flex: 0 1 400px;
+  position: relative;
+  margin-right: 1rem;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--primary);
+  border-radius: 25px;
+  background: rgba(10, 10, 10, 0.8);
+  color: var(--text-light);
+  transition: all 0.3s;
+}
+
+.search-bar input:focus {
+  outline: none;
+  box-shadow: 0 0 10px var(--primary-glow);
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.nav-links ul {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--text-light);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  /* background: var(--violet); */
+  box-shadow: 0 0 30px #4a006a;
+  transform: scale(1.1);
+}
+
+.icons {
+  display: flex;
+  gap: 1rem;
+}
+
+.hamburger {
+  display: none;
+  cursor: pointer;
+  z-index: 1001;
+  background: none;
+  border: none;
+  color: var(--text-light);
+  font-size: 1.5rem;
+}
+
+.search-bar {
+  flex: 0 1 400px;
+  position: relative;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--violet);
+  border-radius: 25px;
+  background: rgba(10, 10, 10, 0.8);
+  color: var(--text-light);
+  transition: all 0.3s;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.product-card:hover .product-name {
+  text-shadow: 0 0 10px var(--primary);
+}
+
+.add-to-cart {
+  background: var(--primary);
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  color: var(--text-light);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.add-to-cart:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px var(--primary-glow);
+}
+
+/* Category Dropdown Styles */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background: rgba(10, 10, 10, 0.95);
+  min-width: 160px;
+  border-radius: 8px;
+  padding: 0.5rem 0;
+  box-shadow: 0 0 15px rgba(127, 0, 255, 0.3);
+  border: 1px solid rgba(127, 0, 255, 0.3);
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: var(--text-light);
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.dropdown-content a:hover {
+  text-shadow: 0 0 15px #7f00ff;
+}
+
+/* Previous styles for products remain the same... */
+
+/* Updated Mobile Responsiveness */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  nav {
+    flex-direction: flex;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .search-bar {
+    width: 100%;
+    height: 5vh;
+    flex: 0 1 50px;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    height: 100vh;
+    width: 70%;
+    background: rgba(10, 10, 10, 0.98);
+    flex-direction: column;
+    padding: 5rem 1rem 1rem;
+    transition: right 0.3s ease;
+  }
+
+  .nav-links.active {
+    right: 0;
+  }
+
+  .nav-links ul {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .nav-links li {
+    width: 100%;
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 1rem;
+    width: 100%;
+  }
+
+  .dropdown-content {
+    position: static;
+    width: 100%;
+    background: rgba(20, 20, 20, 0.95);
+    margin-left: 1rem;
+  }
+
+  .search-bar {
+    order: -1;
+    width: 100%;
+    margin: 1rem 0;
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    padding: 1rem;
+  }
+}
+
+/* ... existing code ... */
+
+.nav-links a:hover {
+  background-color: #8529af;
+  box-shadow: 0 0 30px rgba(88, 0, 139, 0.5);
+}
+
+/* ... existing code ... */

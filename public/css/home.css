@@ -1,0 +1,938 @@
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Charm:wght@400;700&display=swap');
+
+::-webkit-scrollbar {
+    width: 7px;
+}
+
+::-webkit-scrollbar-track {
+    background: #2c2c2c;
+    /* Dark background for the track */
+}
+
+::-webkit-scrollbar-thumb {
+    background: #555;
+    /* Darker color for the thumb */
+    border-radius: 10px;
+    /* Rounded corners */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #777;
+    /* Lighter color on hover */
+}
+
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: "Chakra Petch", serif;
+    letter-spacing: 0.5px;
+}
+
+
+
+
+:root {
+    --primary: #4a006a;
+    --primary-glow: rgba(127, 0, 255, 0.5);
+    --text-light: #ffffff;
+    --text-dark: #1a1a1a;
+    --bg-dark: #0a0a0a;
+    --violet: #7f00ff;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    min-height: 100vh;
+    overflow-x: hidden;
+    font-family: "Chakra Petch", serif;
+}
+
+#particles-js {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+nav {
+    background: rgba(10, 10, 10, 0.95);
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(127, 0, 255, 0.3);
+}
+
+.logo {
+    color: var(--text-light);
+    font-size: 1.7rem;
+    font-weight: bold;
+    text-decoration: none;
+    transition: text-shadow 0.3s;
+    z-index: 1001;
+    font-family: "Charm", serif;
+    color: #ff4a77;
+    font-weight: 700;
+    text-shadow: 0 0 10px var(--primary),
+        0 0 20px var(--primary),
+        0 0 30px var(--primary);
+
+}
+
+
+.search-bar {
+    flex: 0 1 500px;
+    position: relative;
+    margin-right: 5vh;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--primary);
+    border-radius: 25px;
+    background: rgba(10, 10, 10, 0.8);
+    color: var(--text-light);
+    transition: all 0.3s;
+}
+
+.search-bar input:focus {
+    outline: none;
+    box-shadow: 0 0 30px var(--primary-glow);
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.nav-links ul {
+    display: flex;
+    gap: 1rem;
+    list-style: none;
+}
+
+.nav-links a {
+    color: var(--text-light);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    background: var(--violet);
+    box-shadow: 0 0 30px #4a006a;
+    transform: scale(1.1);
+}
+
+.icons {
+    display: flex;
+    gap: 1rem;
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+    z-index: 1001;
+    background: none;
+    border: none;
+    color: var(--text-light);
+    font-size: 1.5rem;
+}
+
+.search-bar {
+    flex: 0 1 400px;
+    position: relative;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--violet);
+    border-radius: 25px;
+    background: rgba(10, 10, 10, 0.8);
+    color: var(--text-light);
+    transition: all 0.3s;
+}
+
+
+/* Category Dropdown Styles */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background: rgba(10, 10, 10, 0.95);
+    min-width: 160px;
+    border-radius: 8px;
+    padding: 0.5rem 0;
+    box-shadow: 0 0 15px rgba(127, 0, 255, 0.3);
+    border: 1px solid rgba(127, 0, 255, 0.3);
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: var(--text-light);
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.dropdown-content a:hover {
+    background: var(--violet);
+}
+
+/* Previous styles for products remain the same... */
+
+/* Updated Mobile Responsiveness */
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;
+    }
+
+    nav {
+        flex-direction: flex;
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .search-bar {
+        width: 100%;
+        height: 5vh;
+        flex: 0 1 50px;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: 70%;
+        background: rgba(10, 10, 10, 0.98);
+        flex-direction: column;
+        padding: 5rem 1rem 1rem;
+        transition: right 0.3s ease;
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+
+    .nav-links ul {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .nav-links li {
+        width: 100%;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 1rem;
+        width: 100%;
+    }
+
+    .dropdown-content {
+        position: static;
+        width: 100%;
+        background: rgba(20, 20, 20, 0.95);
+        margin-left: 1rem;
+    }
+
+    .search-bar {
+        order: -1;
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+}
+
+
+#Philanthropy {
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    font-family: "Chakra Petch", serif;
+}
+
+.heading h2 {
+    text-align: center;
+    font-size: 34px;
+    margin: 40px 0px;
+    line-height: 40px;
+    position: relative;
+    height: 5vh;
+}
+
+@media only screen and (max-width: 400px) {
+    .heading h2 {
+        font-size: 20px;
+    }
+}
+
+
+#Philanthropy .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    background: transparent;
+    margin-bottom: 30px;
+}
+
+.card {
+    width: 300px;
+}
+
+.card .card-inner {
+    position: relative;
+    height: 300px;
+    border-radius: 25px;
+    overflow: hidden;
+}
+
+.card .card-inner .box .img-box {
+    position: absolute;
+    inset: 0;
+    transition: 0.3s all linear;
+}
+
+.card .card-inner .box .img-box:hover {
+    transform: scale(1.1);
+}
+
+.card .card-inner .box .img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.icon {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 80px;
+    height: 80px;
+    border-top-left-radius: 50px;
+    padding: 12px;
+    background-color: white;
+}
+
+.icon::after {
+    position: absolute;
+    content: "";
+    top: -18px;
+    right: 0;
+    background: transparent;
+    width: 18px;
+    height: 18px;
+    border-bottom-right-radius: 30px;
+    box-shadow: 10px 10px 0 10px #fff;
+}
+
+.icon::before {
+    position: absolute;
+    content: "";
+    bottom: 0;
+    left: -18px;
+    background: transparent;
+    width: 18px;
+    height: 18px;
+    border-bottom-right-radius: 30px;
+    box-shadow: 10px 10px 0 10px #fff;
+}
+
+.icon span {
+    transform: rotate(-40deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    border-radius: 50px;
+    background-color: white;
+    transition: 0.3s all linear;
+}
+
+.card:nth-child(1) .icon span {
+    background-color: #d3b19a;
+}
+
+.card:nth-child(2) .icon span {
+    background-color: #70b3b1;
+}
+
+.card:nth-child(3) .icon span {
+    background-color: #d05fa2;
+}
+
+.card:nth-child(4) .icon span {
+    background-color: #ec672ad8;
+}
+
+.card:nth-child(5) .icon span {
+    background-color: #302e2f;
+}
+
+.card:nth-child(6) .icon span {
+    background-color: #351c5e;
+}
+
+.card:nth-child(7) .icon span {
+    background-color: #15bb54;
+}
+
+.card:nth-child(8) .icon span {
+    background-color: #e0dd1a;
+}
+
+.icon i {
+    color: white;
+    font-size: 24px;
+}
+
+.icon:hover span {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.content h3 {
+    font-size: 24px;
+    margin-bottom: 7px;
+    margin-top: -50px;
+}
+
+.content h2 {
+    font-size: 28px;
+    margin-top: 10px;
+}
+
+.content p {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+
+
+
+/* Additional CSS */
+/* Scroll animation for cards */
+.card {
+    opacity: 0;
+    transform: translateY(50px);
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Add delay for each card */
+.card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.card:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.card:nth-child(3) {
+    animation-delay: 0.5s;
+}
+
+.card:nth-child(4) {
+    animation-delay: 0.7s;
+}
+
+.card:nth-child(5) {
+    animation-delay: 0.9s;
+}
+
+.card:nth-child(6) {
+    animation-delay: 1.1s;
+}
+
+.card:nth-child(7) {
+    animation-delay: 1.3s;
+}
+
+.card:nth-child(8) {
+    animation-delay: 1.5s;
+}
+
+
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+#Philanthropy {
+    min-height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+
+
+
+
+/* h1,
+h2,
+h3,
+h4,
+h5,
+h6 {} */
+
+* {
+    padding: 0;
+    margin: 0;
+    transition: 0.3s;
+}
+
+section {
+    padding: 60px 0;
+    min-height: 100vh;
+}
+
+a,
+a:hover,
+a:focus,
+a:active {
+    text-decoration: none;
+    outline: none;
+}
+
+.footer-column ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.main-footer {
+    position: relative;
+    background: #1e2129;
+}
+
+.footer-content {
+    position: relative;
+    padding: 85px 0px 80px 0px;
+}
+
+.footer-content:before {
+    position: absolute;
+    content: '';
+    background: url(https://i.ibb.co/jyRLrBZ/world-map.png);
+    width: 744px;
+    height: 365px;
+    top: 50px;
+    right: 0px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    animation-name: float-bob;
+    animation-duration: 30s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    -webkit-animation-name: float-bob;
+    -webkit-animation-duration: 30s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    -moz-animation-name: float-bob;
+    -moz-animation-duration: 30s;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-timing-function: linear;
+    -ms-animation-name: float-bob;
+    -ms-animation-duration: 30s;
+    -ms-animation-iteration-count: infinite;
+    -ms-animation-timing-function: linear;
+    -o-animation-name: float-bob;
+    -o-animation-duration: 30s;
+    -o-animation-iteration-count: infinite;
+    -o-animation-timing-function: linear;
+}
+
+.footer-content .logo-widget {
+    position: relative;
+    margin-top: -5px;
+}
+
+.footer-content .logo-widget .footer-social li {
+    position: relative;
+    display: inline-block;
+    margin-right: 9px;
+}
+
+.footer-content .logo-widget .footer-social li:last-child {
+    margin-right: 0px;
+}
+
+.footer-content .logo-widget .footer-social li a {
+    position: relative;
+    display: inline-block;
+    width: 42px;
+    height: 42px;
+    line-height: 42px;
+    background: #2e3138;
+    color: #9ea0a9;
+    text-align: center;
+    border-radius: 50%;
+}
+
+.footer-content .logo-widget .footer-social li a:hover {
+    color: #ffffff;
+    background: #7f00ff;
+    box-shadow: 0 0 15px #731ec9;
+    /* background: #00ffff; */
+}
+
+.footer-content .logo-widget .logo-box {
+    margin-bottom: 25px;
+}
+
+.footer-content .logo-widget .text p {
+    color: #9ea0a9;
+    margin-bottom: 32px;
+}
+
+.footer-content .footer-title {
+    position: relative;
+    font-size: 24px;
+    line-height: 35px;
+    color: #ffffff;
+    font-weight: 700;
+    margin-bottom: 27px;
+    
+}
+
+.footer-content .service-widget {
+    /* text-align: center; */
+    width: 150px;
+}
+
+.footer-content .service-widget .list li {
+    display: block;
+    margin-bottom: 12px;
+}
+
+.footer-content .service-widget .list li a {
+    position: relative;
+    display: inline-block;
+    color: #9ea0a9;
+}
+
+.footer-content .service-widget .list li a:hover {
+    color: #7f00ff;
+    text-shadow: 0 0 10px #8000ff;
+
+}
+
+.footer-content .contact-widget p {
+    color: #9ea0a9;
+    margin-bottom: 15px;
+    z-index: 100;
+}
+
+/* .footer-content .contact-widget {
+    margin-left: 90px;
+} */
+
+.footer-content .contact-widget .footer-title {
+    margin-bottom: 29px;
+    
+}
+
+/** footer-bottom **/
+
+.footer-bottom {
+    position: relative;
+    background: #13151a;
+    padding: 25px 0px 22px 0px;
+}
+
+.footer-bottom .copyright,
+.footer-bottom .copyright a,
+.footer-bottom .footer-nav li a {
+    position: relative;
+    color: #9ea0a9;
+}
+
+.footer-bottom .copyright a:hover,
+.footer-bottom .footer-nav li a:hover {
+    color: #7f00ff;
+}
+
+.footer-bottom .footer-nav {
+    position: relative;
+    text-align: right;
+}
+
+.footer-bottom .footer-nav li {
+    position: relative;
+    display: inline-block;
+    margin-left: 29px;
+}
+
+.footer-bottom .footer-nav li:first-child {
+    margin-left: 0px;
+}
+
+.footer-bottom .footer-nav li:before {
+    position: absolute;
+    content: '';
+    background: #9ea0a9;
+    width: 1px;
+    height: 14px;
+    top: 7px;
+    left: -18px;
+}
+
+.footer-bottom .footer-nav li:first-child:before {
+    display: none;
+}
+
+.logo-box img {
+    max-width: 220px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* General footer styling */
+.main-footer {
+    background-color: transparent;
+    color: #fff;
+}
+
+.main-footer .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.footer-bottom .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.footer-column {
+    width: 30%;
+    margin-bottom: 20px;
+}
+
+/* Logo and description */
+.logo-box img {
+    max-width: 150px;
+}
+
+.text p {
+    line-height: 1.6;
+}
+
+/* Social media icons */
+.footer-social {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 10px;
+}
+
+.footer-social li {
+    display: inline;
+}
+
+.footer-social a {
+    color: #fff;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.footer-social a:hover {
+    color: #1da1f2;
+    /* Example hover color */
+}
+
+/* Footer titles */
+.footer-title {
+    font-size: 20px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+/* Services and contact list */
+.list {
+    list-style: none;
+    padding: 0;
+}
+
+.list li {
+    margin-bottom: 10px;
+}
+
+.list a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.list a:hover {
+    color: #1da1f2;
+    /* Hover effect */
+}
+
+/* Footer bottom section */
+.footer-bottom {
+    background-color: #111;
+    padding: 15px 0;
+    text-align: center;
+}
+
+.footer-bottom-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-nav {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+}
+
+.footer-nav li {
+    display: inline;
+}
+
+.footer-nav a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer-nav a:hover {
+    color: #1da1f2;
+}
+
+.copyright {
+    font-size: 14px;
+}
+
+
+/* ... existing code ... */
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        /* Stack columns vertically */
+        /* align-items: center; */
+        /* Center align items */
+    }
+
+    contact-widget{
+        text-align: left;
+    }
+
+    .footer-column {
+        width: auto;
+        /* Full width for each column */
+        margin-bottom: 20px;
+        /* Space between columns */
+    }
+
+    .footer-bottom {
+        text-align: center;
+        /* Center text in the footer bottom */
+    }
+
+    .footer-nav {
+        flex-direction: column;
+        /* Stack nav items vertically */
+        gap: 10px;
+        /* Space between nav items */
+    }
+}
+
+/* Additional styles for smaller screens */
+@media (max-width: 480px) {
+    .footer-title {
+        font-size: 18px;
+        /* Adjust font size for titles */
+    }
+
+    .footer-social a {
+        font-size: 16px;
+        /* Adjust font size for social icons */
+    }
+
+    .copyright {
+        font-size: 12px;
+        /* Adjust font size for copyright */
+    }
+}
+
+/* ... existing code ... */
