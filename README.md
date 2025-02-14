@@ -23,13 +23,13 @@ The following images showcase the key pages of the e-commerce platform:
 
 | **User Side** | **Admin Side** |
 |--------------|--------------|
-| ![Home Page (Before Login)](images/home-before-login.png) | ![Admin Dashboard](images/admin-dashboard.png) |
-| ![Login/Register Page](images/login-register.png) | ![Product Creation Page](images/product-create.png) |
-| ![Home Page (After Login)](images/home-after-login.png) | ![Product Update Page](images/product-update.png) |
-| ![Product Category Page](images/product-category.png) |  |
-| ![Add to Cart Page](images/add-to-cart.png) |  |
-| ![Profile Page](images/profile.png) |  |
-| ![Product Details Page](images/product-details.png) |  |
+| ![Home Page (Before Login)](https://github.com/Rakesh-Dey-007/E-Commerce/blob/main/Project_Preview/Before_Login.png)) | ![Admin Home Page](https://github.com/Rakesh-Dey-007/E-Commerce/blob/main/Project_Preview/Admin_Home.png) |
+| ![Login/Register Page](https://github.com/Rakesh-Dey-007/E-Commerce/blob/main/Project_Preview/Login_Page.png) | ![Admin Dashboard](https://github.com/Rakesh-Dey-007/E-Commerce/blob/main/Project_Preview/Admin_Dashboard.png) |
+| ![Home Page (After Login)](https://github.com/Rakesh-Dey-007/E-Commerce/blob/main/Project_Preview/After_Login.png) | ![Product Creation Page](https://github.com/Rakesh-Dey-007/E-Commerce/blob/main/Project_Preview/Admin-Product_Create.png) |
+| ![Product Category Page](https://github.com/Rakesh-Dey-007/E-Commerce/blob/main/Project_Preview/Product_Page.png) | ![Product Update Page](https://github.com/Rakesh-Dey-007/E-Commerce/blob/main/Project_Preview/Admin-Product_Update.png) |
+| ![Add to Cart Page](https://github.com/Rakesh-Dey-007/E-Commerce/blob/main/Project_Preview/Add_To_Cart.png) |  |
+| ![Product Details Page](https://github.com/Rakesh-Dey-007/E-Commerce/blob/main/Project_Preview/Product_Details.png) |  |
+| ![Profile Page](https://github.com/Rakesh-Dey-007/E-Commerce/blob/main/Project_Preview/User_Profile.png) |  |
 
 ## 🛠️ Technologies Used
 - **Frontend:** HTML (EJS), CSS, JavaScript
